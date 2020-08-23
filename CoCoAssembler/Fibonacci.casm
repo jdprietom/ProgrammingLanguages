@@ -1,0 +1,63 @@
+Function: fibonacci/1
+Constants: 0, 1, 2
+Locals: n
+Globals: fibonacci
+BEGIN
+	label00:		LOAD_FAST						0
+					LOAD_CONST						0
+					COMPARE_OP						2
+					POP_JUMP_IF_FALSE		     label01
+					LOAD_CONST						0
+					RETURN_VALUE
+					
+	label01:		LOAD_FAST						0
+					LOAD_CONST						1
+					COMPARE_OP						2
+					POP_JUMP_IF_FALSE		     label02
+					LOAD_CONST						1
+					RETURN_VALUE
+					
+	label02:		LOAD_GLOBAL						0
+					LOAD_FAST						0
+					LOAD_CONST						1
+					BINARY_SUBTRACT				
+					CALL_FUNCTION					1
+					
+					LOAD_GLOBAL						0
+					LOAD_FAST						0
+					LOAD_CONST						2
+					BINARY_SUBTRACT				
+					CALL_FUNCTION					1
+					
+					BINARY_ADD
+					
+					RETURN_VALUE
+					
+END
+
+Function: main/0
+Constants: None, "Tu numero: ", "Fibonacci de ", "es: "
+Locals: n
+Globals: int, input, print, fibonacci
+BEGIN
+	LOAD_GLOBAL				2
+	LOAD_CONST				2
+	
+	LOAD_GLOBAL				0
+	LOAD_GLOBAL				1
+	LOAD_CONST				1
+	CALL_FUNCTION			1
+	CALL_FUNCTION			1
+	STORE_FAST				0
+	
+	LOAD_FAST				0
+	LOAD_CONST				3	
+	LOAD_GLOBAL 			3
+	LOAD_FAST				0
+	CALL_FUNCTION			1
+	CALL_FUNCTION			4
+	
+	POP_TOP
+	LOAD_CONST				0
+	RETURN_VALUE
+END
